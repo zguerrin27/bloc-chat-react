@@ -38,9 +38,12 @@ class RoomList extends Component {
     return(
         <div>
             <section>
+                <h1>Bloc Chat</h1>
                 {
                     this.state.rooms.map(room => (
-                        <li>{room.name}</li>
+                        
+                            <li key={room.key} >{room.name}</li>
+                       
                     ))
                 }
             </section>
