@@ -49,12 +49,12 @@ class RoomList extends Component {
                     <input 
                         type="text" 
                         placeholder="Room Name"
-                        value={this.state.rooms}
-                        onChange={this.createRoom}
+                        value={this.state.name}
+                        onChange={this.handleChange}
                     />
                     <input 
                         type="submit" 
-                        value="Submit" 
+                        value="Submit"
                     />
                 </form>
             </section>
