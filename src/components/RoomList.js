@@ -17,17 +17,39 @@ class RoomList extends Component {
       room.key = snapshot.key;
       this.setState({ rooms: this.state.rooms.concat( room ) })
     });
-    }
+  }
+
+  createRoom(newRoomName) {
+    this.roomsRef.push({
+        name: newRoomName
+      });
+  }
 
   render() {
     return(
-      <section>
-          {
-              this.state.rooms.map(room => (
-                <li>{room.name}</li>
-              ))
-          }
-      </section>
+        <div>
+            <section>
+                {
+                    this.state.rooms.map(room => (
+                        <li>{room.name}</li>
+                    ))
+                }
+            </section>
+            <section>
+                <form onSubmit={this.createRoom}>
+                    <input 
+                        type="text" 
+                        placeholder="Room Name"
+                        // value={this.state.rooms}
+                        // onChange={this.createRoom}
+                    />
+                    <input 
+                        type="submit" 
+                        value="Submit" 
+                    />
+                </form>
+            </section>
+      </div>
     );
   }
 }
