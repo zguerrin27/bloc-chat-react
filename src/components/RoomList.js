@@ -32,7 +32,9 @@ class RoomList extends Component {
 
   createRoom(e) {
     e.preventDefault();
-    this.roomsRef.push({ name: this.state.name }); 
+    if (!this.state.name) { return };
+    this.roomsRef.push({ name: this.state.name });
+    this.setState({ name: '' }); 
   }
 
   chooseRoom(e, room){

@@ -23,7 +23,6 @@ class App extends Component {
     };
 
     this.activeRoom = this.activeRoom.bind(this);
-    // this.handleActiveRoomChange = this.handleActiveRoomChange.bind(this);
   }
 
   activeRoom(room){
@@ -32,13 +31,6 @@ class App extends Component {
     });
   }
 
-  // handleActiveRoomChange(e) {
-  //   e.preventDefault();
-  //   const newActiveRoom = e.target.value;
-  //   this.activeRoom(newActiveRoom)
-  //   //console.log(newActiveRoom);
-  // }
-  
 
   render() {
     return (
