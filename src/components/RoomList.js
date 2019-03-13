@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-
-
 class RoomList extends Component {
   constructor(props){
     super(props);
@@ -58,7 +56,7 @@ class RoomList extends Component {
                 <form onSubmit={this.createRoom}>
                     <input 
                         type="text" 
-                        placeholder="Room Name"
+                        placeholder="Enter Room Name"
                         value={this.state.name}
                         onChange={this.handleChange}
                     />
