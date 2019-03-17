@@ -10,7 +10,7 @@ class User extends Component {
             userName: ''
         }
 
-    // this.signIn = this.singIn.bind(this);
+    // this.signIn = this.singIn.bind(this);      why doesnt this work... but the fat arrow function in the render does?
     this.signOut = this.singOut.bind(this);
     }
 
@@ -39,10 +39,9 @@ class User extends Component {
     render() {
         return(
             <div>
-            <h1>Welcome to the User Component</h1>
+            <h1>{this.state.userName}</h1>
             <button onClick={() => this.signIn()}>Sign in</button>
             <button onClick={this.signOut}>Sign out</button>
-            <h2>{this.state.userName}</h2>
             </div>
         );
     }
