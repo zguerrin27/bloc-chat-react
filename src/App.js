@@ -21,7 +21,7 @@ class App extends Component {
 
     this.state = {
       activeRoom: null,
-      user: ''
+      user: null
     };
 
     this.activeRoom = this.activeRoom.bind(this);

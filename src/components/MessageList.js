@@ -6,12 +6,8 @@ class MessageList extends Component {
 
         this.state = {
             messages: [],
-            // newMessage: '',
-            username: '',
-            conent: '',
-            sentAt: '',
-            roomId: ''
-
+            roomMessages: [],
+            newMessage: ''
         };
 
         this.messagesRef = this.props.firebase.database().ref('messages');
@@ -29,25 +25,25 @@ class MessageList extends Component {
 
       handleChange(e) {
         e.preventDefault();
-        this.setState({ 
-            // newMessage: e.target.value,
-            username: this.props.user,
-            content: e.target.value,
-            sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
-            roomId: this.props.activeRoom
-         });
+        this.setState({ newMessage: e.target.value });
       }
 
       createMessage(e){
         e.preventDefault();
-        if (!this.state.content) { return };
+        const date = new Date();
+        if (!this.state.newMessage) { return };
+        if(!this.props.activeRoom || !this.props.user ) {                     // Logic to make sure user is selecting a room before trying to add a message 
+            alert("Please Select a Room and Sign In before adding a message");   // and is signed in 
+            this.setState({ newMessage: '' }); 
+            return;
+         };
         this.messagesRef.push({ 
-            username: this.props.username,
             content: this.state.newMessage,
-            roomId: this.state.roomId,
-            sentAt: this.state.sentAt            
+            username: this.props.user.displayName,
+            roomId: this.props.activeRoom.key,
+            sentAt: date.toLocaleTimeString()
          });
-        this.setState({ username: '', content: '', sentAt: '', roomId: ''  }); 
+        this.setState({ newMessage: '' }); 
       }
 
 
@@ -65,7 +61,7 @@ class MessageList extends Component {
                         <input 
                             type="text" 
                             placeholder="Enter Message"
-                            value={this.state.content}
+                            value={this.state.newMessage}
                             onChange={this.handleChange}
                         />
                         <input 
